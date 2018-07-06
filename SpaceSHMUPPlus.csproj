@@ -101,6 +101,7 @@
     <Compile Include="Assets\_Scripts\Enemy_4.cs" />
     <Compile Include="Assets\_Scripts\Hero.cs" />
     <Compile Include="Assets\_Scripts\Main.cs" />
+    <Compile Include="Assets\_Scripts\PowerUp.cs" />
     <Compile Include="Assets\_Scripts\Projectile.cs" />
     <Compile Include="Assets\_Scripts\Shield.cs" />
     <Compile Include="Assets\_Scripts\Utils.cs" />

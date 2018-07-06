@@ -18,6 +18,11 @@ public class Main : MonoBehaviour {
         S = this;
         bndCheck = GetComponent<BoundsCheck>();
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
+
+        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
+        foreach (WeaponDefinition def in weaponDefinitions) {
+            WEAP_DICT[def.type] = def;
+        }
     }
     public void SpawnEnemy() {
         int ndx = Random.Range(0, prefabEnemies.Length);
@@ -35,10 +40,7 @@ public class Main : MonoBehaviour {
         go.transform.position = pos;
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
 
-        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
-        foreach (WeaponDefinition def in weaponDefinitions) {
-            WEAP_DICT[def.type] = def;
-        }
+        
     }
 
     public void DelayedRestart(float delay) {

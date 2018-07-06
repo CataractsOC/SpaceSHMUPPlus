@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceSHMUPPlus", "SpaceSHMUPPlus.csproj", "{A4525FC0-9B22-1D92-2EE3-24506246ED91}"
 EndProject
 Global

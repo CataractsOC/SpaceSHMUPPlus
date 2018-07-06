@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour {
 
     void Awake() {
         bndCheck = GetComponent<BoundsCheck>();
-        rend = GetComponent<Renderer>(); // d
+        rend = GetComponent<Renderer>();
         rigid = GetComponent<Rigidbody>();
     }
 

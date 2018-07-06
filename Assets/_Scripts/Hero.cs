@@ -18,11 +18,17 @@ public class Hero : MonoBehaviour {
     // This variable holds a reference to the last triggering GameObject
     private GameObject lastTriggerGo = null;
 
+    public delegate void WeaponFireDelegate();
+    public WeaponFireDelegate fireDelegate;
+
 	public Bounds bounds;
 
 	void Awake(){
-		S = this;
-		bounds = Utils.CombineBoundsOfChildren (this.gameObject);
+        if (S == null) {
+            S = this;
+            bounds = Utils.CombineBoundsOfChildren(this.gameObject);
+        }
+        //fireDelegate += TempFire;
 	}
 	
 	// Update is called once per frame
@@ -45,16 +51,12 @@ public class Hero : MonoBehaviour {
 		
 		transform.rotation =Quaternion.Euler(yAxis*pitchMult, xAxis*rollMult,0);
 
-        if ( Input.GetKeyDown( KeyCode.Space) ) {
-            TempFire();
-        }
-	}
-
-    void TempFire() {
-        GameObject projGo = Instantiate<GameObject>(projectilePrefab);
-        projGo.transform.position = transform.position;
-        Rigidbody rigidB = projGo.GetComponent<Rigidbody>();
-        rigidB.velocity = Vector3.up * projectileSpeed;
+        //if ( Input.GetKeyDown( KeyCode.Space) ) {
+        //    TempFire();
+        //}
+        if (Input.GetAxis("Jump") == 1 && fireDelegate != null) {
+            fireDelegate();
+        }
     }
 
     void OnTriggerEnter(Collider other) {

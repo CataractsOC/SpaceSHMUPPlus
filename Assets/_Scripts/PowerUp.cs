@@ -25,18 +25,23 @@ public class PowerUp : MonoBehaviour {
         rigid = GetComponent<Rigidbody>();
         bndCheck = GetComponent<BoundsCheck>();
         cubeRend = cube.GetComponent<Renderer>();
+
         Vector3 vel = Random.onUnitSphere;
+
         vel.z = 0;
         vel.Normalize();
         vel *= Random.Range(driftMinMax.x, driftMinMax.y);
         rigid.velocity = vel;
+
         transform.rotation = Quaternion.identity;
+
         rotPerSecond = new Vector3(Random.Range(rotMinMax.x, rotMinMax.y),
-        Random.Range(rotMinMax.x, rotMinMax.y),
-        Random.Range(rotMinMax.x, rotMinMax.y));
+            Random.Range(rotMinMax.x, rotMinMax.y),
+            Random.Range(rotMinMax.x, rotMinMax.y));
 
         birthTime = Time.time;
     }
+
     void Update() {
         cube.transform.rotation = Quaternion.Euler(rotPerSecond * Time.time);
 
@@ -55,6 +60,7 @@ public class PowerUp : MonoBehaviour {
             c.a = 1f - (u * 0.5f);
             letter.color = c;
         }
+
         if (!bndCheck.isOnScreen) {
             Destroy(gameObject);
         }
